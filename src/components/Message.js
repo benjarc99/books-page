@@ -1,9 +1,9 @@
 import React from "react";
 
-const Message = ({ msg, bgColor }) => {
+const Message = ({ msg, bgColor, marginTop }) => {
   let styles = {
     padding: "1rem",
-    marginTop: "3rem",
+    marginTop: marginTop,
     marginBottom: "1rem",
     textAlign: "center",
     color: "#fff",

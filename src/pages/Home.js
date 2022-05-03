@@ -41,6 +41,7 @@ const Home = () => {
         <Message
           msg="Ocurrió un error, intentelo nuevamente"
           bgColor="#dc3545"
+          marginTop="3rem"
         />
       )}
       <Grid sx={{ flexGrow: 1, marginTop: 0 }} container spacing={6}>

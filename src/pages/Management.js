@@ -13,6 +13,7 @@ const Management = () => {
         <Message
           msg="Ocurrió un error, intentelo nuevamente"
           bgColor="#dc3545"
+          marginTop="20px"
         />
       ) : (
         <article className="main-container-books-edit">
