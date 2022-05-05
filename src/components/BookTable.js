@@ -13,9 +13,9 @@ const BookTable = () => {
         <thead>
           <tr>
             <th className="th1">Name</th>
-            <th className="th2">Publication Date</th>
-            <th>Pages</th>
-            <th>Description</th>
+            <th className="th2">Pages</th>
+            <th className="th3">Publication Date</th>
+            <th className="th4">Description</th>
             <th className="th5">Details</th>
             <th className="th6">Action</th>
           </tr>

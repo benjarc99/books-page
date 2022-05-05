@@ -14,6 +14,7 @@ export default function MediaCard({ name, id, img, description, pages, btn }) {
     background-color: #3f53b5;
     color: #fff;
     margin-left: 8px;
+    padding: 8px;
 
     :hover {
       background-color: #cad3ff;
@@ -24,7 +25,7 @@ export default function MediaCard({ name, id, img, description, pages, btn }) {
   return (
     <>
       <Grid item xs={12} sm={4} md={3} sx={{ paddingTop: "64px" }}>
-        <Card sx={{}}>
+        <Card>
           <CardMedia
             component="img"
             sx={{ height: "60vh", minHeight: 300 }}

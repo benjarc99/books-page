@@ -18,3 +18,56 @@
 .books-edit-list {
   width: 75%;
 }
+
+@media (max-width: 1000px) {
+  .main-container-books-edit {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .books-edit-form {
+    width: 70%;
+    padding-right: 15px;
+  }
+
+  .books-edit-list {
+    width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .th2,
+  .td2,
+  .th3,
+  .td3 {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .th5 {
+    text-align: center;
+  }
+  .td5 button {
+    margin-right: 10px;
+  }
+
+  .th4,
+  .td4 {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  td,
+  th {
+    padding: 10px;
+  }
+  .books-edit-form {
+    width: 100%;
+  }
+
+  .books-edit-list {
+    width: 100%;
+  }
+}

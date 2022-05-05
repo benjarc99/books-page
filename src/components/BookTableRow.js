@@ -9,9 +9,9 @@ const BookTableRow = ({ book, id, name, pages, publication, description }) => {
   const { setBookToEdit, deleteBook } = useContext(BooksContext);
   const CustomizedButton = styled(Button)`
     height: 28px;
-    width: 77px;
+    width: 84px;
     background-color: #3f53b5;
-    padding: 0px;
+    padding: 5px;
     color: #fff;
 
     :hover {
