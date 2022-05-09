@@ -51,11 +51,6 @@
   .td5 button {
     margin-right: 10px;
   }
-
-  .th4,
-  .td4 {
-    display: none;
-  }
 }
 
 @media (max-width: 550px) {
@@ -69,5 +64,12 @@
 
   .books-edit-list {
     width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .th4,
+  .td4 {
+    display: none;
   }
 }

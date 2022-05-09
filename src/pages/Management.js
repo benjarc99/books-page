@@ -17,7 +17,7 @@ const Management = () => {
         />
       ) : (
         <article className="main-container-books-edit">
-          <div className="books-edit-form">
+          <div className="books-edit-form" id="book-form">
             <BookForm />
           </div>
           <div className="books-edit-list">

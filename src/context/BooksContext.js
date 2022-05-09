@@ -4,8 +4,8 @@ import { createContext, useState, useEffect } from "react";
 const BooksContext = createContext();
 
 const BooksProvider = ({ children }) => {
-  const [books, setBooks] = useState(null);
-  const [filteredBooks, setFilteredBooks] = useState(null);
+  const [books, setBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
   const [bookToEdit, setBookToEdit] = useState(null);

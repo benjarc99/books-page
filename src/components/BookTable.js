@@ -16,14 +16,13 @@ const BookTable = () => {
             <th className="th2">Pages</th>
             <th className="th3">Publication Date</th>
             <th className="th4">Description</th>
-            <th className="th5">Details</th>
-            <th className="th6">Action</th>
+            <th className="th5">Actions</th>
           </tr>
         </thead>
         <tbody>
           {books.length === 0 ? (
             <tr>
-              <td colSpan={6}>Tabla sin datos</td>
+              <td colSpan={5}>Tabla sin datos</td>
             </tr>
           ) : (
             books.map((book, index) => (

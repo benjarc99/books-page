@@ -12,12 +12,12 @@ const SeeMoreBook = () => {
   const currentBook = books.filter((book) => book.id === bookId);
 
   useEffect(() => {
-    setBook(currentBook[0]);
-  }, []);
+    setBook(...currentBook);
+  }, [currentBook]);
 
   return (
     <>
-      {loading && <Loader />}
+      {loading && <Loader marginTop="20px" />}
       {error && (
         <Message
           msg="Ocurrió un error, intentelo nuevamente"
