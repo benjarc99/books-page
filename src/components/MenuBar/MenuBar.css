@@ -1,17 +1,18 @@
-nav a {
+a.menu-items {
   font-family: sans-serif;
   font-size: 16.5px;
   text-decoration: none;
-  padding: 4px;
+  padding: 3px;
   color: #fff;
   margin-left: 10px;
+  border-bottom: 3px solid #3f52b5;
 }
 
-nav a:hover {
+a.menu-items:hover {
   transition: all 0.1s ease-in;
   border-bottom: 3px solid #fff;
 }
 
-.nav-active {
+a.menu-items.nav-active {
   border-bottom: 3px solid #fff;
 }

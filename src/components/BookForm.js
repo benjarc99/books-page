@@ -51,7 +51,7 @@ const BookForm = () => {
 
   return (
     <>
-      <h3>Add Book</h3>
+      <h3>{bookToEdit ? 'Edit Book' : 'Add Book'}</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

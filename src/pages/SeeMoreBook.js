@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import BooksContext from "../context/BooksContext";
@@ -9,6 +9,7 @@ const SeeMoreBook = () => {
   const { bookId } = useParams();
   const { books, error, loading } = useContext(BooksContext);
   const [book, setBook] = useState(null);
+  const navigate = useNavigate();
   const currentBook = books.filter((book) => book.id === bookId);
 
   useEffect(() => {
@@ -27,9 +28,7 @@ const SeeMoreBook = () => {
       {book && (
         <div className="container-book-path-extended">
           <div className="book-path-extended-top">
-            <Link to="/">
-              <button>&#8592; Back to Books</button>
-            </Link>
+            <button onClick={() => navigate("/")}>&#8592; Back to Books</button>
           </div>
           <div className="book-path-extended-middle">
             <div className="book-path-middle-img">

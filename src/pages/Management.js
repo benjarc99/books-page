@@ -1,6 +1,7 @@
+import { Button } from "@mui/material";
 import { useContext } from "react";
-import BookForm from "../components/BookForm";
-import BookTable from "../components/BookTable";
+import AddIcon from '@mui/icons-material/Add';
+import BookTable from "../components/TableMangement/BookTable";
 import Message from "../components/Message";
 import BooksContext from "../context/BooksContext";
 import "./Management.css";
@@ -16,15 +17,16 @@ const Management = () => {
           marginTop="20px"
         />
       ) : (
-        <article className="main-container-books-edit">
-          <div className="books-edit-form" id="book-form">
-            <BookForm />
+          <div className="col-12 d-flex-column p-0">
+              <div className="col-12 d-flex justify-content-between mb-3 p-0">
+                    <h3>Table of Books</h3>
+                    <Button variant="contained" >
+                    <AddIcon fontSize="inherit" /> Add book
+                    </Button>
+                </div>
+                <div className="col-12 p-0"><BookTable /></div>
           </div>
-          <div className="books-edit-list">
-            <BookTable />
-          </div>
-        </article>
-      )}
+        )}
     </>
   );
 };

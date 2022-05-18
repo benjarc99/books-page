@@ -10,29 +10,13 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.books-edit-form {
+/* .books-edit-form {
   width: calc(30% - 15px);
   padding-right: 15px;
-}
+} */
 
 .books-edit-list {
-  width: 75%;
-}
-
-@media (max-width: 1000px) {
-  .main-container-books-edit {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .books-edit-form {
-    width: 70%;
-    padding-right: 15px;
-  }
-
-  .books-edit-list {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 @media (max-width: 800px) {
@@ -58,10 +42,6 @@
   th {
     padding: 10px;
   }
-  .books-edit-form {
-    width: 100%;
-  }
-
   .books-edit-list {
     width: 100%;
   }

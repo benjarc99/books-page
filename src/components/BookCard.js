@@ -4,23 +4,17 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
-import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import { ButtonStyled } from "./Main.styled";
+/* import { ButtonStyled } from "./Main.styled"; */
 
 export default function MediaCard({ name, id, img, description, pages, btn }) {
-  const CustomizedButton = styled(Button)`
-    background-color: #3f53b5;
-    color: #fff;
-    margin-left: 8px;
-    padding: 8px;
+  const navigate = useNavigate();
 
-    :hover {
-      background-color: #cad3ff;
-      color: #3f53b5;
-    }
-  `;
+  const handleSeeMore = (id) => {
+    navigate(`/book/${id}`);
+  };
 
   return (
     <>
@@ -59,9 +53,7 @@ export default function MediaCard({ name, id, img, description, pages, btn }) {
             {pages + " pages"}
           </Typography>
           <CardActions>
-            <Link to={`/book/${id}`} style={{ textDecoration: "none" }}>
-              <CustomizedButton size="small">{btn}</CustomizedButton>
-            </Link>
+              <ButtonStyled onClick={() => handleSeeMore(id)}>{btn}</ButtonStyled>
           </CardActions>
         </Card>
       </Grid>

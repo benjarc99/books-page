@@ -15,8 +15,8 @@ const BookCards = ({ books }) => {
           excerpt={book.excerpt}
           publicationDate={book.publicationDate}
           key={book.id}
-        />
-      ))}
+          />
+          ))}
     </>
   );
 };

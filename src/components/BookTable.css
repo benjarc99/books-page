@@ -1,3 +1,17 @@
+.container-title-button-table {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.container-title-button-table h3 {
+  margin-top: 0;
+}
+
+.container-title-button-table button {
+  margin-bottom: 20px;
+}
+
 table {
   background-color: #fff;
   border-collapse: collapse;
@@ -41,7 +55,7 @@ th {
 
 .td5 {
   height: 100px;
-  width: 110px;
+  width: 130px;
   display: flex;
   align-items: center;
   margin: 0 auto;
