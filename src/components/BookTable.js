@@ -9,9 +9,7 @@ import { BoxModalFormStyled } from "./Main.styled";
 
 const BookTable = () => {
   const { books } = useContext(BooksContext);
-  const [openAddBook, setOpenAddBook] = useState(false);
-
-  const handleCloseModal = ()  => setOpenAddBook(false);
+  
 
   return (
     <>
@@ -51,23 +49,7 @@ const BookTable = () => {
           )}
         </tbody>
       </table>
-      <Modal
-          open={openAddBook}
-          onClose={handleCloseModal}
-          aria-labelledby="parent-modal-title"
-          aria-describedby='parent-modal-description'
-          closeAfterTransition
-          BackdropComponent={Backdrop}
-          BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={openAddBook}>
-            <BoxModalFormStyled>
-                <BookForm/>
-        </BoxModalFormStyled>
-        </Fade>
-        </Modal>
+      
     </>
   );
 };

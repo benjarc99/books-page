@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import BooksContext from '../../context/BooksContext'
 import { Delete, Edit, RemoveRedEye } from '@mui/icons-material'
 import { MaterialTableStyled } from './BookTable.styled'
 import { createTheme, ThemeProvider } from '@mui/material'
+import BookTableModal from './BookTableModal'
 
 const columns = [
     {field: 'name', title: 'Name'},
@@ -22,11 +23,19 @@ const columns = [
 ]
 
 const BookTable = () => {
-    const {books} = useContext(BooksContext)
+    const {books , loading} = useContext(BooksContext)
+    const [tableLoading, setTableLoading] = useState(false)
+    const [openFormModal, setOpenFormModal] = useState(false);
+    const [selectedRow, setSelectedRow] = useState({})
+
+    useEffect(() => {
+      setTableLoading(loading)
+    }, [loading])
     
     
     const formModalOpen = (rowData) => {
-        console.log(rowData)
+        setOpenFormModal(true)
+        setSelectedRow(rowData)
     }
     
     const themeTable = createTheme({
@@ -47,8 +56,10 @@ const BookTable = () => {
         paging: false,
         isLoading: true,
         search: true,
+        loadingType: 'overlay',
         searchFieldAlignment: 'left',
         actionsColumnIndex: -1,
+        thirdSortClick: false,
         headerStyle : {
             backgroundColor: themeTable.palette.primary.main,
             color: '#fff',
@@ -73,6 +84,7 @@ const BookTable = () => {
                 title={''}
                 data={books}
                 columns={columns}
+                isLoading={tableLoading}
                 actions={[
                     {
                         icon: () => <Edit style={{width: '20px', color: '#29a645'}}/>,
@@ -85,14 +97,14 @@ const BookTable = () => {
                         icon: () => <Delete style={{width: '20px', color: '#dd3545'}}/>,
                         tooltip: 'Delete Book',
                         onClick: (_, rowData) => {
-                            formModalOpen(rowData)
+                            /* formModalOpen(rowData) */
                         }
                     },
                     {
                         icon: () => <RemoveRedEye style={{width: '20px', color: '#6d757d'}}/>,
                         tooltip: 'See Book',
                         onClick: (_, rowData) => {
-                            formModalOpen(rowData)
+                            /* formModalOpen(rowData) */
                         }
                     },
                 ]}
@@ -100,6 +112,7 @@ const BookTable = () => {
                 >
                 </MaterialTableStyled>
             </ThemeProvider>
+            <BookTableModal open={openFormModal} setOpen={setOpenFormModal} selectedRow={selectedRow} setSelectedRow={setSelectedRow}/>
         </>
     )
 }

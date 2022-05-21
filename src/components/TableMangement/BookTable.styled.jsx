@@ -6,7 +6,4 @@ export const MaterialTableStyled = styled(MaterialTable)`
     tbody{
         font-size: 10px !important;
     }
-    tfooter{
-        margin: 0;
-    }
-`
+`;
