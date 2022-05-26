@@ -6,7 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-import { ButtonStyled } from "./Main.styled";
+import { ButtonStyled } from "../Main.styled";
 /* import { ButtonStyled } from "./Main.styled"; */
 
 export default function MediaCard({ name, id, img, description, pages, btn }) {

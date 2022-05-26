@@ -1,5 +1,5 @@
 import { Backdrop, Fade, Modal } from '@mui/material'
-import BookForm from '../BookForm';
+import BookForm from '../BookFormModal/BookForm';
 import {makeStyles} from "@mui/styles";
 
 
@@ -11,7 +11,7 @@ import {makeStyles} from "@mui/styles";
     },
     paper: {
         maxWidth: 1000,
-        width: '100%',
+        width: '70%',
         backgroundColor: '#fff',
         padding: 20,
         zIndex: 1060,
@@ -24,7 +24,7 @@ import {makeStyles} from "@mui/styles";
 const BookTableModal = ({open, setOpen, selectedRow, setSelectedRow}) => {
     const classes = useStyles();
 
-  const handleCloseModal = ()  => setOpen(false);
+    const handleCloseModal = ()  => setOpen(false);
 
   return (
     <div>
@@ -42,7 +42,7 @@ const BookTableModal = ({open, setOpen, selectedRow, setSelectedRow}) => {
       >
         <Fade in={open}>
             <div className={classes.paper}>
-                <BookForm/>
+                <BookForm setOpen={setOpen} selectedRow={selectedRow} setSelectedRow={setSelectedRow} />
             </div>
         </Fade>
         </Modal>

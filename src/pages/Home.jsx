@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import BookCards from "../components/BookCards";
-import BookInput from "../components/BookInput";
-import Loader from "../components/Loader";
+import BookCards from "../components/BookCards/BookCards";
+import BookInput from "../components/BookSearch/BookSearch";
+import Loader from "../components/Loader/Loader";
 import Message from "../components/Message";
 import Grid from "@mui/material/Grid";
 import BooksContext from "../context/BooksContext";

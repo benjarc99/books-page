@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Management from "../pages/Management";
 import SeeMoreBook from "../pages/SeeMoreBook";

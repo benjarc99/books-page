@@ -1,14 +1,14 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 const BooksContext = createContext();
 
 const BooksProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
-  const [bookToEdit, setBookToEdit] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +38,7 @@ const BooksProvider = ({ children }) => {
 
   const createBook = (data) => {
     setLoading(true);
-    const url = "/api/books/new";
+    const url = "new";
 
     axios({
       method: "post",
@@ -65,7 +65,7 @@ const BooksProvider = ({ children }) => {
   const updateBook = (data) => {
     setLoading(true);
     let id = data.id;
-    const url = `/api/books/${id}`;
+    const url = `${id}`;
 
     axios({
       method: "put",
@@ -89,40 +89,49 @@ const BooksProvider = ({ children }) => {
       });
   };
 
-  const deleteBook = (id) => {
-    let isDelete = window.confirm(
-      `¿Estás seguro de eliminar el registros con el id ${id}?`
-    );
+    const deleteBook = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            const url = `${id}`;
+            axios({
+                method: "delete",
+                url,
+                headers: {
+                "Content-type": "application/json",
+                Accept: "application/json",
+                },
+            })
+            .then((res) => {
+                let newBooks = books.filter((book) => book.id !== id);
 
-    if (isDelete) {
-      const url = `/api/books/${id}`;
-      axios({
-        method: "delete",
-        url,
-        headers: {
-          "Content-type": "application/json",
-          Accept: "application/json",
-        },
-      })
-        .then((res) => {
-          let newBooks = books.filter((book) => book.id !== id);
-
-          setBooks(newBooks);
-          setFilteredBooks(newBooks);
+                setBooks(newBooks);
+                setFilteredBooks(newBooks);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        }
         })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
+    };
 
   const data = {
     books,
     setBooks,
     filteredBooks,
     setFilteredBooks,
-    bookToEdit,
-    setBookToEdit,
     createBook,
     updateBook,
     deleteBook,

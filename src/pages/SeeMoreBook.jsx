@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Loader from "../components/Loader";
+import Loader from "../components/Loader/Loader";
 import Message from "../components/Message";
 import BooksContext from "../context/BooksContext";
-import "./SeeMoreBook.css";
+import { ButtonStyled } from "./SeeMoreBook.styled";
 
 const SeeMoreBook = () => {
   const { bookId } = useParams();
@@ -26,30 +26,32 @@ const SeeMoreBook = () => {
         />
       )}
       {book && (
-        <div className="container-book-path-extended">
-          <div className="book-path-extended-top">
-            <button onClick={() => navigate("/")}>&#8592; Back to Books</button>
-          </div>
-          <div className="book-path-extended-middle">
-            <div className="book-path-middle-img">
-              <img src={book.image} alt={book.name} />
+        <div className="row">
+            <div className="row">
+              <div class="col">
+                    <ButtonStyled className="btn btn-primary" onClick={() => navigate("/")}>&#8592; Back to Books</ButtonStyled>
+              </div>
             </div>
-            <div className="book-path-extended-middle-text">
-              <h2>{book.name}</h2>
-              <p>{book.description}</p>
-              <p>
-                Fecha de Publicación:
-                <span>{` ${book.publicationDate.slice(0, 10)}`}</span>
-              </p>
-              <p>
-                <span>{`${book.pages} `}</span>pages
-              </p>
+            <div className="row my-3">
+                <div className="col-3">
+                    <img className="w-100" src={book.image} alt={book.name} />
+                </div>
+                <div className="col-9">
+                    <h2 style={{color: '#3f63b5',textDecoration:'underline'}}>{book.name}</h2>
+                    <p>{book.description}</p>
+                    <p style={{textDecoration:'underline'}}>
+                        Fecha de Publicación:
+                        <span>{` ${book.publicationDate.slice(0, 10)}`}</span>
+                    </p>
+                    <p>
+                        <span style={{color: '#8f8e8e', fontWeight: 'bold'}}>{`${book.pages} `}</span>pages
+                    </p>
+                </div>
             </div>
-          </div>
-          <div className="book-path-extended-bottom">
-            <h2>Excerpt</h2>
-            <p>{book.excerpt}</p>
-          </div>
+            <div className="row">
+                <h2 style={{color: '#3f63b5',textDecoration:'underline'}}>Excerpt</h2>
+                <p>{book.excerpt}</p>
+            </div>
         </div>
       )}
     </>
