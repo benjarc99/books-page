@@ -11,6 +11,7 @@ import {makeStyles} from "@mui/styles";
     },
     paper: {
         maxWidth: 1000,
+        minHeight: 753,
         width: '70%',
         backgroundColor: '#fff',
         padding: 20,

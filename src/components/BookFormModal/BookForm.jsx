@@ -4,7 +4,6 @@ import BooksContext from "../../context/BooksContext";
 import { FormControl } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { ButtonCleanStyled, ButtonSendStyled } from './BookForm.styled';
-import Swal from "sweetalert2";
 
 const initialForm = {
   name: "",
@@ -152,7 +151,7 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
                 <ButtonSendStyled className="w-100 py-2" onClick={() => handleSubmit()} >
                     Send {loading && <CircularProgress size={20} style={{color: 'white', marginLeft: '10px'}}/>}
                 </ButtonSendStyled>
-                { emptyForm && <span style={{color: '#d53'}}>
+                { emptyForm && <span style={{color: '#d53', fontSize: '14px'}}>
                     All the fields are required    
                 </span> }
             </div>
@@ -162,3 +161,31 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
 };
 
 export default BookForm;
+
+
+/*
+    // formik
+    const validationSchema = yup.object({
+    name: yup 
+        .string('Enter a name')
+        .required('Name is required'),
+    description: yup
+        .string('Enter a description')
+        .required('Description is required'),
+    pages: yup
+        .string('Enter the pages')
+        .string().matches(/^[0-9]*$/)('Number was expected')
+        .required('Pages is required'),
+    publicationDate: yup
+        .string('Enter a publication date')
+        .string().matches(/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/)('The format required is yyyy-mm-dd')
+        .required('Publication Date is required'),
+    excerpt: yup
+        .string('Enter a excerpt')
+        .required('Excerpt is required'),
+    image: yup 
+        .string('Enter a url image')
+        .url('Url image was expected')
+        .required('Url image is required'),
+    });
+*/
