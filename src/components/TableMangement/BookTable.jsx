@@ -5,6 +5,7 @@ import { MaterialTableStyled } from './BookTable.styled'
 import { createTheme, ThemeProvider } from '@mui/material'
 import BookTableModal from '../BookTableModal/BookTableModal'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
 
 const columns = [
     {field: 'name', title: 'Name'},
@@ -24,7 +25,7 @@ const columns = [
 ]
 
 const BookTable = () => {
-    const {books , loading, deleteBook } = useContext(BooksContext)
+    const {books, setBooks, setFilteredBooks, loading, setError, setLoading, deleteBook} = useContext(BooksContext)
     const [tableLoading, setTableLoading] = useState(false)
     const [openFormModal, setOpenFormModal] = useState(false);
     const [selectedRow, setSelectedRow] = useState({})
@@ -34,8 +35,36 @@ const BookTable = () => {
     useEffect(() => {
       setTableLoading(loading)
     }, [loading])
-    
-    
+
+    useEffect(() => {
+        if (books.length === 0) {
+            setLoading(true);
+            axios
+                .get()
+                .then((res) => {
+                    const booksData = res.data.books;
+        
+                    setBooks(booksData);
+                    setFilteredBooks(booksData);
+                    setError(false);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    const objError = {
+                    error: true,
+                    status: err.status,
+                    statusText: err.statusText,
+                    };
+        
+                    setError(true);
+                    setLoading(false);
+                    console.log(objError);
+                });
+        } else {
+            return
+        }
+    }, []);
+
     const formModalOpen = (rowData) => {
         setOpenFormModal(true)
         setSelectedRow(rowData)

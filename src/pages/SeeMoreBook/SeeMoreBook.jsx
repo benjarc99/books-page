@@ -1,34 +1,60 @@
+import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Loader from "../components/Loader/Loader";
-import Message from "../components/Message";
-import BooksContext from "../context/BooksContext";
+import Loader from "../../components/Loader/Loader";
+import Message from "../../components/Message";
+import BooksContext from "../../context/BooksContext";
 import { ButtonStyled } from "./SeeMoreBook.styled";
 
 const SeeMoreBook = () => {
   const { bookId } = useParams();
-  const { books, error, loading } = useContext(BooksContext);
-  const [book, setBook] = useState(null);
+  const { books, error, setError, loading, setLoading } = useContext(BooksContext);
+  const [book, setBook] = useState([]);
   const navigate = useNavigate();
-  const currentBook = books.filter((book) => book.id === bookId);
 
   useEffect(() => {
-    setBook(...currentBook);
-  }, [currentBook]);
+        if(books.length !== 0) {
+            const currentBook = books.filter((book) => book.id === bookId);
+            setBook(currentBook[0]);
+        }
+        else {
+            setLoading(true)
+            let url = `${bookId}`;
+            axios
+                .get(url)
+                .then(({data}) => {
+                    console.log(data)
+                    setBook(data.book);
+                    setError(false);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    const objError = {
+                    error: true,
+                    status: err.status,
+                    statusText: err.statusText,
+                    };
+
+                    setError(true);
+                    setLoading(false);
+                    console.log(objError);
+                })
+        } 
+  }, []);
 
   return (
     <>
-      {loading && <Loader marginTop="20px" />}
+      {loading && <Loader marginTop="30px" />}
       {error && (
         <Message
           msg="Ocurrió un error, intentelo nuevamente"
           bgColor="#dc3545"
         />
       )}
-      {book && (
+      {book.length !== 0 && (
         <div className="row">
             <div className="row">
-              <div class="col">
+              <div className="col">
                     <ButtonStyled className="btn btn-primary" onClick={() => navigate("/")}>&#8592; Back to Books</ButtonStyled>
               </div>
             </div>
@@ -41,7 +67,7 @@ const SeeMoreBook = () => {
                     <p>{book.description}</p>
                     <p style={{textDecoration:'underline'}}>
                         Fecha de Publicación:
-                        <span>{` ${book.publicationDate.slice(0, 10)}`}</span>
+                        <span>{` ${book?.publicationDate?.slice(0, 10)}`}</span>
                     </p>
                     <p>
                         <span style={{color: '#8f8e8e', fontWeight: 'bold'}}>{`${book.pages} `}</span>pages

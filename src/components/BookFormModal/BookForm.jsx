@@ -4,6 +4,7 @@ import BooksContext from "../../context/BooksContext";
 import { FormControl } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { ButtonCleanStyled, ButtonSendStyled } from './BookForm.styled';
+import Swal from "sweetalert2";
 
 const initialForm = {
   name: "",
@@ -28,7 +29,7 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
   }
 
   const [form, setForm] = useState(initialForm);
-
+  const [emptyForm, setEmptyForm] = useState(false);
 
   useEffect(() => {
     if (selectedRow) {
@@ -40,13 +41,22 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
   
 
   const handleSubmit = () => {
-    if (form.id === null) {
-      createBook(form);
+    if(Object.values(form).some(value => value === '')){
+        setEmptyForm(true);
+        setTimeout(() => {
+            setEmptyForm(false)
+        }, 2500);
     } else {
-      updateBook(form);
+        if (form.id === null) {
+            createBook(form);
+            setEmptyForm(false);
+            handleReset();
+        } else {
+            updateBook(form);
+            setEmptyForm(false);;
+        }
     }
 
-    handleReset();
   };
 
   const handleChange = (e) => {
@@ -62,6 +72,7 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
     if (selectedRow) {
         setSelectedRow('')
     }
+    setEmptyForm(false)
   }
 
   return (
@@ -137,10 +148,13 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
             {!selectedRow && <div className="col-4 d-flex justify-content-center mb-1">
                 <ButtonCleanStyled className="mb-1" onClick={() => handleReset()}>Clean</ButtonCleanStyled>
             </div>}
-            <div className="col-4">
+            <div className="col-4 text-center">
                 <ButtonSendStyled className="w-100 py-2" onClick={() => handleSubmit()} >
                     Send {loading && <CircularProgress size={20} style={{color: 'white', marginLeft: '10px'}}/>}
-                </ButtonSendStyled> 
+                </ButtonSendStyled>
+                { emptyForm && <span style={{color: '#d53'}}>
+                    All the fields are required    
+                </span> }
             </div>
         </div>
     </>

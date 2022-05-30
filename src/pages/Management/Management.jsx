@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import AddIcon from '@mui/icons-material/Add';
-import BookTable from "../components/TableMangement/BookTable";
-import Message from "../components/Message";
-import BooksContext from "../context/BooksContext";
+import BookTable from "../../components/TableMangement/BookTable";
+import Message from "../../components/Message";
+import BooksContext from "../../context/BooksContext";
 import { Button } from "@mui/material";
-import BookTableModal from "../components/BookTableModal/BookTableModal";
+import BookTableModal from "../../components/BookTableModal/BookTableModal";
 
 const Management = () => {
   const { error } = useContext(BooksContext);

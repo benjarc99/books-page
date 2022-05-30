@@ -1,3 +1,4 @@
+import { BorderAllRounded } from "@mui/icons-material";
 import React from "react";
 
 const Message = ({ msg, bgColor, marginTop }) => {
@@ -9,6 +10,8 @@ const Message = ({ msg, bgColor, marginTop }) => {
     color: "#fff",
     fontWeight: "bold",
     backgroundColor: bgColor,
+    boxShadow: '0 0 15px #a09a9a',
+    borderRadius: '5px',
   };
   return (
     <div style={styles}>

@@ -5,36 +5,10 @@ import Swal from "sweetalert2";
 const BooksContext = createContext();
 
 const BooksProvider = ({ children }) => {
-  const [books, setBooks] = useState([]);
-  const [filteredBooks, setFilteredBooks] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-
-    axios
-      .get()
-      .then((res) => {
-        const booksData = res.data.books;
-
-        setBooks(booksData);
-        setFilteredBooks(booksData);
-        setError(false);
-        setLoading(false);
-      })
-      .catch((err) => {
-        const objError = {
-          error: true,
-          status: err.status,
-          statusText: err.statusText,
-        };
-
-        setError(true);
-        setLoading(false);
-        console.log(objError);
-      });
-  }, []);
+    const [books, setBooks] = useState([]);
+    const [filteredBooks, setFilteredBooks] = useState([]);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
   const createBook = (data) => {
     setLoading(true);
@@ -82,6 +56,13 @@ const BooksProvider = ({ children }) => {
         setBooks(newBooks);
         setFilteredBooks(newBooks);
         setLoading(false);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Your book has been updated',
+            showConfirmButton: false,
+            timer: 1500
+        })
       })
       .catch((err) => {
         console.log(err);
@@ -136,7 +117,9 @@ const BooksProvider = ({ children }) => {
     updateBook,
     deleteBook,
     error,
+    setError,
     loading,
+    setLoading
   };
 
   return <BooksContext.Provider value={data}>{children}</BooksContext.Provider>;

@@ -16,6 +16,10 @@ body {
   background-color: #eaebea;
 }
 
+.swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+  z-index: 2000 !important;
+}
+
 img {
   height: auto;
   max-width: 100%;
