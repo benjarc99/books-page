@@ -16,7 +16,7 @@ const initialForm = {
 };
 
 const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
-  const {createBook, updateBook, loading } = useContext(BooksContext);
+  const {createBook, updateBook, loading, setLoading } = useContext(BooksContext);
   const bookToEdit = {
     name: selectedRow?.name,
     description: selectedRow?.description,
@@ -72,6 +72,7 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
         setSelectedRow('')
     }
     setEmptyForm(false)
+    setLoading(false)
   }
 
   return (
