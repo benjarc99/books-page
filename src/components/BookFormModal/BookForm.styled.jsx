@@ -12,5 +12,5 @@ export const ButtonSendStyled = styled(Button)`
 export const ButtonCleanStyled = styled(Button)`
     background-color: transparent;
     box-shadow: 1px 1px 5px #757575;
-    padding: 0px;
+    padding: 0px 3px;
 `

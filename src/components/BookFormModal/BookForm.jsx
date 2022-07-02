@@ -222,11 +222,11 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
                 </div>
                 <div className="row d-flex flex-column align-items-center mt-1">
                     {!selectedRow && <div className="col-4 d-flex justify-content-center mb-1">
-                        <ButtonCleanStyled className="mb-1" onClick={() => formik.handleReset}>Clean</ButtonCleanStyled>
+                        <ButtonCleanStyled className="mb-1" onClick={() => formik.handleReset}>Clean Form</ButtonCleanStyled>
                     </div>}
                     <div className="col-4 text-center">
                         <ButtonSendStyled className="w-100 py-2" type="submit" >
-                            Send {loading && <CircularProgress size={20} style={{color: 'white', marginLeft: '10px'}}/>}
+                            {selectedRow ? 'Edit Book' : 'Add Book'} {loading && <CircularProgress size={20} style={{color: 'white', marginLeft: '10px'}}/>}
                         </ButtonSendStyled>
                         {/* { emptyForm && <span style={{color: '#d53', fontSize: '14px'}}>
                             All the fields are required
