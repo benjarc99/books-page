@@ -40,11 +40,12 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
         name: yup 
             .string('Enter a name')
             .required('Name is required')
-            .matches(/^[A-Z\d\sÑ.,:¿?()'áéíóú-]+$/i, "Only letters, numbers and (. , : - ¿ ? () ') are allowed for this field"),
+            .matches(/^[A-Z\d\sÑ.,:¿?¡!()'áéíóúü-]+$/i, "Only letters, numbers and (. , ; : - ¿? ¡! () ') are allowed for this field")
+            .max(110),
         description: yup
             .string('Enter a description')
             .required('Description is required')
-            .matches(/^[A-Z\d\sÑ.,:¿?()'áéíóú-]+$/i, "Only letters, numbers and (. , : - ¿ ? () ') are allowed for this field"),
+            .matches(/^[A-Z\d\sÑ.,:¿?¡!()'áéíóúü-]+$/i, "Only letters, numbers and (. , ; : - ¿? ¡! () ') are allowed for this field"),
         pages: yup
             .number('Enter the pages')
             .required('Pages is required')
@@ -54,7 +55,7 @@ const BookForm = ({setOpen, selectedRow, setSelectedRow}) => {
         excerpt: yup
             .string('Enter a excerpt')
             .required('Excerpt is required')
-            .matches(/^[A-Z\d\sÑ.,:¿?()'áéíóú-]+$/i, "Only letters, numbers and (. , : - ¿ ? () ') are allowed for this field"),
+            .matches(/^[A-Z\d\sÑ.,:¿?¡!()'áéíóúü-]+$/i, "Only letters, numbers and (. , ; : - ¿? ¡! () ') are allowed for this field"),
         image: yup 
             .string('Enter a url image')
             .url('Url image was expected')
