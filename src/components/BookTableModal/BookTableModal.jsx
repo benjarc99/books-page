@@ -1,7 +1,6 @@
 import { Backdrop, Fade, Modal } from '@mui/material'
 import BookForm from '../BookFormModal/BookForm';
 import {makeStyles} from "@mui/styles";
-import { minHeight, style } from '@mui/system';
 
 
  const useStyles  = makeStyles({
@@ -42,7 +41,7 @@ const BookTableModal = ({open, setOpen, selectedRow, setSelectedRow}) => {
         }}
       >
         <Fade in={open}>
-            <div className={classes.paper} style={selectedRow ? {height:'auto'} : {minHeight: 753}}>
+            <div className={classes.paper} /* style={selectedRow ? {height:'auto'} : {minHeight: 753}} */>
                 <BookForm setOpen={setOpen} selectedRow={selectedRow} setSelectedRow={setSelectedRow} />
             </div>
         </Fade>

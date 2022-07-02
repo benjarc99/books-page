@@ -1,4 +1,3 @@
-import { BorderAllRounded } from "@mui/icons-material";
 import React from "react";
 
 const Message = ({ msg, bgColor, marginTop }) => {

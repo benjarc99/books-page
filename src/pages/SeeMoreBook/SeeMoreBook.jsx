@@ -23,7 +23,6 @@ const SeeMoreBook = () => {
             axios
                 .get(url)
                 .then(({data}) => {
-                    console.log(data)
                     setBook(data.book);
                     setError(false);
                     setLoading(false);

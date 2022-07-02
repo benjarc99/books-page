@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import Swal from "sweetalert2";
 
 const BooksContext = createContext();
@@ -29,9 +29,22 @@ const BooksProvider = ({ children }) => {
         setBooks([...books, newBookData]);
         setFilteredBooks([...books, newBookData]);
         setLoading(false);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Your book has been created successfully',
+            showConfirmButton: false,
+            timer: 2500
+        })
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Error',
+            html: `${err.message}`,
+            showConfirmButton: true,
+        })
         setLoading(false);
       });
   };
@@ -61,11 +74,17 @@ const BooksProvider = ({ children }) => {
             icon: 'success',
             title: 'Your book has been updated',
             showConfirmButton: false,
-            timer: 1500
+            timer: 2500
         })
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Error',
+            html: `${err.message}`,
+            showConfirmButton: true,
+        })
         setLoading(false);
       });
   };
@@ -95,15 +114,21 @@ const BooksProvider = ({ children }) => {
 
                 setBooks(newBooks);
                 setFilteredBooks(newBooks);
+                Swal.fire(
+                    'Deleted!',
+                    'Your book has been deleted.',
+                    'success'
+                )
             })
             .catch((err) => {
-                console.log(err);
+                Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Error',
+                html: `${err.msg}`,
+                showConfirmButton: true,
+                })
             });
-            Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-            )
         }
         })
     };

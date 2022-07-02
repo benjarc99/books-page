@@ -3,7 +3,6 @@ import axios from "axios";
 import { BooksProvider } from "./context/BooksContext";
 import MenuBar from "./components/MenuBar/MenuBar"
 import { createTheme, ThemeProvider } from '@mui/material'
-import { ThemeContext } from "styled-components";
 
 let key = process.env.REACT_APP_KEY;
 let urlApi = process.env.REACT_APP_URL;
