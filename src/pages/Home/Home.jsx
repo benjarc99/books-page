@@ -63,7 +63,7 @@ const Home = () => {
 
   return (
     <>
-        <BookSearch handleSearch={handleSearch} />
+        <BookSearch search={search} handleSearch={handleSearch} />
         {loading && <Loader marginTop="3rem" marginLeft="-3rem" />}
         {error && (
             <Message
